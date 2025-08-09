@@ -1,0 +1,44 @@
+CSV Report generated at: pokemon_report.csv
+
+Name,Height (m),Weight (kg)
+arbok,35,650
+beedrill,10,295
+blastoise,16,855
+bulbasaur,7,69
+butterfree,11,320
+caterpie,3,29
+charizard,17,905
+charmander,6,85
+charmeleon,11,190
+clefable,13,400
+clefairy,6,75
+ekans,20,69
+fearow,12,380
+ivysaur,10,130
+kakuna,6,100
+metapod,7,99
+nidoking,14,620
+nidoqueen,13,600
+nidoran-f,4,70
+nidoran-m,5,90
+nidorina,8,200
+nidorino,9,195
+ninetales,11,199
+pidgeot,15,395
+pidgeotto,11,300
+pidgey,3,18
+pikachu,4,60
+raichu,8,300
+raticate,7,185
+rattata,3,35
+sandshrew,6,120
+sandslash,10,295
+spearow,3,20
+squirtle,5,90
+venusaur,20,1000
+vulpix,6,99
+wartortle,10,225
+weedle,3,32
+
+Average Height: 9 m
+Average Weight: 257 kg

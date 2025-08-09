@@ -1,0 +1,33 @@
+#/bin/bash
+
+echo CSV Report generated at: pokemon_report.csv >> pokemon_report.csv
+echo "" >> pokemon_report.csv
+
+num_pokemon=0
+total_height=0
+total_weight=0
+average_height=0
+average_weight=0
+
+echo Name,Height \(m\),Weight \(kg\) >> pokemon_report.csv
+
+for pokemon in pokemon_data/*;do
+name=$(cat $pokemon | jq -r '.forms[].name')
+formatted_height=$(cat $pokemon | jq '.height')
+formatted_weight=$(cat $pokemon | jq '.weight')
+
+echo $name,$formatted_height,$formatted_weight >> pokemon_report.csv
+num_pokemon=$(($num_pokemon + 1))
+total_height=$(($total_height + $formatted_height))
+total_weight=$(($total_weight + $formatted_weight))
+
+done
+
+average_height=$(($total_height / $num_pokemon))
+average_weight=$(($total_weight / $num_pokemon))
+
+echo "" >> pokemon_report.csv
+echo Average Height: $average_height m >> pokemon_report.csv
+echo Average Weight: $average_weight kg >> pokemon_report.csv
+
+# Did not use "awk", "sed"

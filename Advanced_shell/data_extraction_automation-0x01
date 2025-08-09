@@ -1,0 +1,10 @@
+#/bin/bash
+
+name=$(cat data.json | jq -r '.forms[].name')
+formatted_height=$(cat data.json | jq '.height')
+formatted_weight=$(cat data.json | jq '.weight')
+type=$(cat data.json | jq -r '.types[].type.name')
+
+echo $name is of type $type, weighs ${formatted_weight}kg, and is ${formatted_height}m tall.
+
+# Did not use "awk", "sed"

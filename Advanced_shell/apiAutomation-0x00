@@ -1,0 +1,15 @@
+#/bin/bash
+
+read -p "Enter Pokemon name: " pokemon
+# This script is used to fetch and display Pokémon data from the PokeAPI
+response=$(curl -s "https://pokeapi.co/api/v2/pokemon/$pokemon")
+# If the request fails, it should log the error to an error file: errors.txt
+
+
+if [ $response -eq 0 ]; then
+    echo "Failed to fetch data" > errors.txt
+    exit 1
+else
+    echo $response > data.json 
+    echo Fetched successfully 
+fi

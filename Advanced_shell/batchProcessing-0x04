@@ -1,0 +1,25 @@
+#/bin/bash
+pokemons=("Bulbasaur" "Ivysaur" "Venusaur" "Charmander" "Charmeleon")
+
+# Write a script that fetches data for these Pokémon[Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon ] in parallel by leveraging background processes and process management tools.
+# Should contain "kill", "jobs"
+for pokemon in "${pokemons[@]}"; do
+    {
+        echo "Fetching data for $pokemon..."
+        response=$(curl -s "https://pokeapi.co/api/v2/pokemon/${pokemon,,}")
+        
+        if [ $? -eq 0 ]; then
+            mkdir -p pokemon_data # Ensure the directory exists before saving files
+            echo $response > "pokemon_data/${pokemon,,}.json"
+            echo "Saved data to pokemon_data/${pokemon,,}.json ✅"
+        else
+            echo "Failed to fetch data for $pokemon" >> errors.txt
+        fi
+    } &
+done
+wait # Wait for all background processes to finish
+# List all background jobs
+jobs
+# Kill all background jobs
+kill $(jobs -p)
+# Ensure the directory exists before saving files
